@@ -33,7 +33,7 @@ steps:
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: '<Your-Azure-Service-Connection-Name>'
+    azureSubscription: '<azure service connection name >'
     appName: '$(AZURE_WEBAPP_NAME)'
     package: '.'
     deploymentMethod: 'auto'
