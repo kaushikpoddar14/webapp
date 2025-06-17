@@ -7,7 +7,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  AZURE_WEBAPP_NAME: 'webapp-demo-abhishek'  '
+  AZURE_WEBAPP_NAME: 'webapp-kaushik'  '
 
 steps:
 
