@@ -1,1 +1,41 @@
-# webapp
+trigger:
+  branches:
+    include:
+      - main  # or your branch name
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  AZURE_WEBAPP_NAME: 'webapp-demo-abhishek'  # Match with your terraform webapp name
+  AZURE_RESOURCE_GROUP: 'rg-webapp-demo'
+
+steps:
+
+- task: Checkout@1
+
+- task: UseNode@1
+  inputs:
+    version: '18.x'
+
+- script: |
+    npm install
+  displayName: 'Install Dependencies'
+
+- script: |
+    npm run build
+  displayName: 'Build Next.js App'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '.next'
+    artifactName: 'nextjs-build'
+  displayName: 'Publish Build Artifacts'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: '<Your-Azure-Service-Connection-Name>'
+    appName: '$(AZURE_WEBAPP_NAME)'
+    package: '.'
+    deploymentMethod: 'auto'
+  displayName: 'Deploy to Azure Web App'# webapp
