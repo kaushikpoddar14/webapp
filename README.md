@@ -7,8 +7,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  AZURE_WEBAPP_NAME: 'webapp-demo-abhishek'  # Match with your terraform webapp name
-  AZURE_RESOURCE_GROUP: 'rg-webapp-demo'
+  AZURE_WEBAPP_NAME: 'webapp-demo-abhishek'  '
 
 steps:
 
